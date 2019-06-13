@@ -1,0 +1,75 @@
+package com.example.change;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+
+    //1, 5, 10, 25
+
+    EditText editText;
+
+    int cost;
+
+    ArrayList<Integer> arrayList;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        editText = findViewById(R.id.editText);
+        arrayList = new ArrayList<>();
+    }
+
+    public void  onClick(View view) {
+        cost = Integer.parseInt(editText.getText().toString());
+
+        cost = 100-cost;
+
+        while(true){
+            if(cost==25){
+                arrayList.add(25);
+                break;
+            }else if(cost>25){
+                arrayList.add(25);
+                cost = cost-25;
+            }else if(cost == 10){
+                arrayList.add(10);
+                break;
+            }else if(cost>10){
+                arrayList.add(10);
+                cost=cost-10;
+            }else if(cost == 5){
+                arrayList.add(5);
+                break;
+            }else if(cost>5){
+                arrayList.add(5);
+                cost=cost-5;
+            }else if(cost == 1){
+                arrayList.add(1);
+                break;
+            }else if(cost>1){
+                arrayList.add(1);
+                cost=cost-1;
+            }else{
+                break;
+            }
+        }
+
+        String string = "{ ";
+
+        for(int i = 0; i<arrayList.size(); i++){
+            string = string + arrayList.get(i) + " ";
+        }
+
+        string = string+"}";
+        System.out.println(string);
+
+        arrayList.clear();
+    }
+}
